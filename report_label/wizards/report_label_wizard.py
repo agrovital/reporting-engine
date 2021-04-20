@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import api, fields, models
 
 
 class ReportLabelWizard(models.TransientModel):
@@ -13,10 +13,14 @@ class ReportLabelWizard(models.TransientModel):
         if not active_model or not active_ids:
             return False
         return [
-            (0, 0, {
-                "res_id": res_id,
-                "quantity": 1,
-            })
+            (
+                0,
+                0,
+                {
+                    "res_id": res_id,
+                    "quantity": 1,
+                },
+            )
             for res_id in active_ids
         ]
 
